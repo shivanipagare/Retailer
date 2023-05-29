@@ -1,34 +1,51 @@
 
-
+import React, { useState, useEffect } from 'react';
 import {
     MenuUnfoldOutlined,
     MenuFoldOutlined,
     UploadOutlined,
-    DashboardOutlined ,
-    GiftOutlined ,
+    DashboardOutlined,
+    GiftOutlined,
     ShoppingCartOutlined,
-    BankOutlined ,
-   ShopOutlined 
+    BankOutlined,
+    ShopOutlined
 } from '@ant-design/icons';
 import { Button, Layout, Menu, theme } from 'antd';
-import { useState } from 'react';
+
 import Link from 'next/link';
+import Dropdown from 'react-bootstrap/Dropdown';
+
+
+
 const { Header, Sider, Content } = Layout;
 function getItem(children) {
     return children
 }
 const Sidebar = ({ children }) => {
+   
     const [collapsed, setCollapsed] = useState(false);
     const {
         token: { colorBgContainer },
     } = theme.useToken();
 
+   
+    const [ownername, setOwnername] = useState('');
+    useEffect(() => {
+        const ownernameFromStorage = sessionStorage.getItem('ownername');
+        if (ownernameFromStorage) {
+          setOwnername(ownernameFromStorage);
+        }
+      }, []);
     return (
+
         <Layout>
             <Sider trigger={null} collapsible collapsed={collapsed}>
+
                 <div className="demo-logo-vertical " />
                 <h3 style={{ padding: "20px 10px", color: "white", fontStyle: "italic", fontSize: "15px" }}>
                     <ShoppingCartOutlined style={{ marginBottom: "10px", color: "orange", fontSize: "20px" }} />SHOPPER's</h3>
+
+
                 <Menu
                     theme="dark"
                     mode="inline"
@@ -72,9 +89,12 @@ const Sidebar = ({ children }) => {
                     style={{
                         padding: 0,
                         // background: colorBgContainer,
-                        backgroundColor: '#001529'
+                        backgroundColor: '#001529',
+                        // display:"flex"
+
                     }}
                 >
+                    {/* <div className='d-flex'> */}
                     <Button
                         type="text"
                         icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
@@ -86,6 +106,23 @@ const Sidebar = ({ children }) => {
                             color: 'white'
                         }}
                     />
+                    {/* <p style={{float:"right",color:"yellow",margin:"0 70px",}}>welcome:shivani</p> */}
+                    <div style={{ float: "right", margin: "0 70px", }}>
+                        <Dropdown>
+                           
+                            <Dropdown.Toggle style={{ background: "none", border: "none" }} >
+                                welcome : {ownername}
+                            </Dropdown.Toggle>
+                            
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item >Profile</Dropdown.Item>
+                                <Dropdown.Item >Logout</Dropdown.Item>
+
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </div>
+                    {/* </div> */}
                 </Header>
                 <Content
                     style={{

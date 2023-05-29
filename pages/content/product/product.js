@@ -70,29 +70,29 @@ const Product = () => {
 
                   </td>
                   <td>
-                  <div className="d-flex align-items-center">
+                    <div className="d-flex align-items-center">
 
-<div className="ms-3">
-  <p className=" mb-1">{item.available_quantity}</p>
+                      <div className="ms-3">
+                        <p className=" mb-1">{item.available_quantity}</p>
 
-</div>
-</div>
-                   
+                      </div>
+                    </div>
+
                   </td>
                   <td> <div className="d-flex align-items-center">
 
-<div className="ms-3">
-  <p className="fw-bold mb-1">{item.subcategory_id}</p>
+                    <div className="ms-3">
+                      <p className="fw-bold mb-1">{item.subcategory_id}</p>
 
-</div>
-</div></td>
+                    </div>
+                  </div></td>
                   <td> <div className="d-flex align-items-center">
 
-<div className="ms-3">
-  <p className=" mb-1">{item.item_name}</p>
+                    <div className="ms-3">
+                      <p className=" mb-1">{item.item_name}</p>
 
-</div>
-</div></td>
+                    </div>
+                  </div></td>
                   <td><p>{item.company}</p></td>
                   <td><img
                     src={item.image}
